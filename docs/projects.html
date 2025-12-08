@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects - Joey Perrello</title>
+  <style>
+    /* ============================================
+       BRUTALIST PORTFOLIO
+       Principles: Raw, Honest, No-nonsense
+       ============================================ */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #ffffff;
+      --fg: #000000;
+      --accent: #0000ff;
+      --border: #000000;
+      --spacing: 1rem;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.5;
+      font-size: 16px;
+      padding: var(--spacing);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    a:hover {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    a:visited {
+      color: #551a8b;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+      letter-spacing: -1px;
+    }
+
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-top: 1.5rem;
+      margin-bottom: 1.25rem;
+      border-bottom: 3px solid var(--border);
+      padding-bottom: 0.25rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-top: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    strong {
+      font-weight: 700;
+    }
+
+    /* ============================================
+       HEADER
+       ============================================ */
+
+    header {
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 4px solid var(--border);
+    }
+
+    .nav {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+      letter-spacing: 0.5px;
+      padding: 0.25rem 0.5rem;
+      border: 2px solid var(--border);
+    }
+
+    /* ============================================
+       PROJECTS SECTION
+       ============================================ */
+
+    .highlighted-project {
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+      border: 3px solid var(--border);
+      background: #fafafa;
+    }
+
+    .section-label {
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #666;
+      margin-bottom: 0.25rem;
+    }
+
+    .project-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+
+    .project-desc {
+      margin-bottom: 1rem;
+      max-width: 65ch;
+      line-height: 1.6;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border: 1px solid var(--border);
+      background: #f0f0f0;
+      font-family: monospace;
+      text-transform: uppercase;
+    }
+
+    .arrow-link {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border: 2px solid var(--border);
+      background: var(--bg);
+      color: var(--fg);
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+      letter-spacing: 0.5px;
+      margin-top: 1rem;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+
+    footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 3px solid var(--border);
+    }
+
+    .copyright {
+      text-align: center;
+      color: #666;
+      font-size: 0.75rem;
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+
+    @media (max-width: 768px) {
+      body {
+        padding: 0.5rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .nav {
+        flex-direction: column;
+      }
+
+      .nav a {
+        display: block;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Projects</h1>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="work-experience.html">Work Experience</a>
+      <a href="https://docs.google.com/document/d/1LFRu59g_5Sv_UZbjcVwY2nh2HB6MmaVK/edit?usp=sharing&ouid=108662796257647005613&rtpof=true&sd=true" target="_blank">Resume</a>
+    </nav>
+  </header>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <article class="highlighted-project">
+      <p class="section-label">Highlighted Project</p>
+      <h2 class="project-title">ZeroConfAI Gateway</h2>
+      <p class="project-desc">
+        A zero-configuration AI gateway system implementing mDNS service discovery for seamless local network API access.
+        The project features intelligent model routing based on prompt complexity heuristics, automatic cost optimization
+        across multiple AI providers via OpenRouter, and comprehensive usage tracking with SQLite persistence. Built with
+        FastAPI for asynchronous request handling, and thread-safe atomic operations for concurrent access. Technical
+        highlights include proper asyncio lifecycle management, background task processing, and a Python client library
+        with automatic gateway discovery.
+      </p>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">Zeroconf/mDNS</span>
+        <span class="tag">SQLite</span>
+        <span class="tag">AsyncIO</span>
+        <span class="tag">HTTPX</span>
+        <span class="tag">OpenRouter API</span>
+      </div>
+      <a href="https://github.com/jperrello/zeroconfai" target="_blank" class="arrow-link">View Project →</a>
+    </article>
+
+    <article class="highlighted-project">
+      <h2 class="project-title">Auto-Student: Academic Assignment Automation System</h2>
+      <p class="project-desc">
+        A comprehensive academic workflow automation tool integrating Canvas LMS API, OpenAI completions, and content extraction pipelines. The system implements asynchronous file downloading with proper session management, YouTube transcript extraction via youtube-transcript-api, and HTML content parsing with BeautifulSoup4. Features include intelligent text summarization to manage context windows, multi-format file processing (HTML, JSON, CSV, text), and a Streamlit-based GUI with real-time progress tracking. Architecture employs proper async/await patterns, thread-safe operation scheduling, and dataclass-based state management.
+      </p>
+      <p class="project-desc" style="color: #cc6600;">
+        <strong>Note:</strong> Developed as an exploration of educational technology automation. Users should be mindful of academic integrity policies.
+      </p>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">AsyncIO</span>
+        <span class="tag">Canvas API</span>
+        <span class="tag">OpenAI API</span>
+        <span class="tag">Streamlit</span>
+        <span class="tag">BeautifulSoup4</span>
+        <span class="tag">AIOHTTP</span>
+        <span class="tag">CustomTkinter</span>
+      </div>
+      <a href="https://github.com/jperrello/auto-student" target="_blank" class="arrow-link">View Project →</a>
+    </article>
+
+    <article class="highlighted-project">
+      <h2 class="project-title">Moderation and Misinformation on Social Media</h2>
+      <p class="project-desc">
+        Research project investigating algorithmic bias and misinformation propagation across Reddit, Twitter, and Threads. Analyzed platform-specific content moderation approaches and measured the effectiveness of fact-checking mechanisms in reducing toxic content spread. Employed quantitative methods to detect unfair promotion of political ideologies and examined how platform design influences toxicity amplification. Project utilized data collection pipelines, statistical analysis, and machine learning techniques to identify patterns in content recommendation systems.
+      </p>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">Data Analysis</span>
+        <span class="tag">Social Media APIs</span>
+        <span class="tag">Statistical Modeling</span>
+      </div>
+      <a href="https://drive.google.com/file/d/1mevR1MN72UcHVMBmSqdMGuTbEDixRjOo/view?usp=sharing" target="_blank" class="arrow-link">View Academic Paper →</a>
+    </article>
+
+    <article class="highlighted-project">
+      <h2 class="project-title">JAKE - Academic Research Portal</h2>
+      <p class="project-desc">
+        Full-stack web application developed to modernize Stanislaus State's academic research discovery system. Implemented improved search algorithms to reduce irrelevant results, designed a user-friendly interface for research article tracking, and built backend systems for efficient metadata storage and retrieval. Project addressed real pain points in university research workflows through user research and iterative design. Gained experience in both frontend UI/UX design and backend API development.
+      </p>
+      <div class="tags">
+        <span class="tag">Full-stack</span>
+        <span class="tag">Search Optimization</span>
+        <span class="tag">REST APIs</span>
+      </div>
+      <a href="https://github.com/elliott2232/CS4800-JAKE" target="_blank" class="arrow-link">View Project →</a>
+    </article>
+
+    <article class="highlighted-project">
+      <h2 class="project-title">School Counselor Chatbot</h2>
+      <p class="project-desc">
+        Two-day hackathon project (StanHack 2024) building an AI-powered academic advising chatbot. Integrated natural language processing for student queries about course selection, prerequisites, and degree requirements. Implemented 3D avatar modeling for enhanced user engagement and developed conversational AI flows to guide students through academic planning decisions. Project demonstrated rapid prototyping skills and creative application of AI technologies in educational contexts.
+      </p>
+      <div class="tags">
+        <span class="tag">AI/NLP</span>
+        <span class="tag">3D Modeling</span>
+        <span class="tag">Chatbot Development</span>
+        <span class="tag">Rapid Prototyping</span>
+      </div>
+      <a href="https://github.com/ChristianAlameda/HackStan" target="_blank" class="arrow-link">View Project →</a>
+    </article>
+
+    <article class="highlighted-project">
+      <h2 class="project-title">Personal Website</h2>
+      <p class="project-desc">
+        The source code for the website you are looking at now! Built with semantic HTML5, custom CSS including animations and responsive design, and vanilla JavaScript for interactive elements. Demonstrates clean code organization, accessibility considerations, and modern web design principles.
+      </p>
+      <div class="tags">
+        <span class="tag">HTML5</span>
+        <span class="tag">CSS3</span>
+        <span class="tag">JavaScript</span>
+      </div>
+      <a href="https://github.com/jperrello/Personal-Website" target="_blank" class="arrow-link">View Project →</a>
+    </article>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="copyright">© 2025 Joey Perrello. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
