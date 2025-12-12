@@ -138,7 +138,6 @@
 
     .project-desc {
       margin-bottom: 1rem;
-      max-width: 65ch;
       line-height: 1.6;
     }
 
@@ -235,27 +234,34 @@
       <p class="section-label">Highlighted Project</p>
       <h2 class="project-title">Saturn</h2>
       <p class="project-desc">
-        A zero-configuration AI gateway system implementing mDNS service discovery for seamless local network API access.
-        The project features intelligent model routing based on prompt complexity heuristics, automatic cost optimization
-        across multiple AI providers via OpenRouter, and comprehensive usage tracking with SQLite persistence. Built with
-        FastAPI for asynchronous request handling, and thread-safe atomic operations for concurrent access. Technical
-        highlights include proper asyncio lifecycle management, background task processing, and a Python client library
-        with automatic gateway discovery.
+        Zero-configuration AI service discovery system that draws inspiration from Apple's Bonjour software. AI services broadcast availability on your local network, devices find them automatically, with no manual setup required. Allows organization of all cloud and local providers into one centralized server that any user on the network can connect to and use. Uses mDNS/DNS-SD (Bonjour inspiration) to broadcast available AI services with priority-based routing. Run Ollama locally as priority 10, OpenRouter in the cloud as priority 50, and clients automatically connect to the best available option with seamless failover when services go offline. Everything speaks OpenAI-compatible API regardless of backend, so clients work with any provider. FastAPI servers register themselves on the network, clients discover them via either native DNS-SD commands (works in any language, zero dependencies) or the Python zeroconf library. Built multiple server implementations (OpenRouter proxy with 200+ models, Ollama local inference, fallback server for testing), various clients (simple chat, file upload with multimodal support for images/PDFs, local proxy that bridges third-party apps), and integrations for Open WebUI and VLC. The core idea is trading manual service configuration for automatic network-based discovery. Ultimately spend lless time configuring, more time building. 
       </p>
       <div class="tags">
         <span class="tag">Python</span>
         <span class="tag">FastAPI</span>
         <span class="tag">Zeroconf/mDNS</span>
-        <span class="tag">Documentation</span>
-        <span class="tag">Promotion</span>
+        <span class="tag">Service Discovery</span>
       </div>
       <a href="https://github.com/jperrello/Saturn" target="_blank" class="arrow-link">View Project →</a>
     </article>
-    
+
+    <article class="highlighted-project">
+      <h2 class="project-title">Language-Driven Play: LLMs as Game-Playing Agents</h2>
+      <p class="project-desc">
+        Research project investigating whether Large Language Models can effectively evaluate procedurally generated game content. Built on MiniStS (a simplified Slay the Spire implementation) and tested multiple agent architectures: Reverse Chain-of-Thought (RCoT), Chain-of-Thought (CoT), Monte Carlo Tree Search (MCTS), and zero-shot LLM agents. Extended the original paper by comparing modern LLM providers (GPT-4.1, Claude Sonnet 4.5, Gemini 2.5) via OpenRouter. Integrated grammar-based card generation system (GIGL) from collaborating team to test agents on novel, procedurally generated content the models had never seen. Results showed RCoT agents significantly outperformed heuristic scripts and search-based methods by semantically understanding card text and long-term strategy, achieving 50.6 avg health vs MCTS's 35.6 in strategic scenarios. Interesting finding: LLMs struggled with their own generated content—traditional Backtrack-Depth3 agents performed better on GIGL cards than RCoT. Comprehensive evaluation across 5 scenarios with 25 simulations each, demonstrating that structured reasoning is critical for general game playing. Academic paper published as part of graduate coursework.
+      </p>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">LLMs</span>
+        <span class="tag">MCTS</span>
+      </div>
+      <a href="https://github.com/jperrello/MiniStS-Language-Driven-Play-Reimagined" target="_blank" class="arrow-link">View Project →</a>
+    </article>
+
     <article class="highlighted-project">
       <h2 class="project-title">Moderation and Misinformation on Social Media</h2>
       <p class="project-desc">
-        Research project investigating algorithmic bias and misinformation propagation across Reddit, Twitter, and Threads. Analyzed platform-specific content moderation approaches and measured the effectiveness of fact-checking mechanisms in reducing toxic content spread. Employed quantitative methods to detect unfair promotion of political ideologies and examined how platform design influences toxicity amplification. Project utilized data collection pipelines, statistical analysis, and machine learning techniques to identify patterns in content recommendation systems.
+        Research investigating how Reddit, Twitter, and Threads handle misinformation differently. Built data pipelines to scrape political content, then measured whether fact-checking reduces toxic content spread. Analyzed whether algorithms unfairly promote certain political views and how platform design choices amplify toxicity. Used statistical modeling and ML to find patterns in recommendation systems. Predicted 2024 election results a month early as part of this work.
       </p>
       <div class="tags">
         <span class="tag">Python</span>
@@ -269,41 +275,42 @@
     <article class="highlighted-project">
       <h2 class="project-title">Auto-Student: Academic Assignment Automation System</h2>
       <p class="project-desc">
-        A comprehensive academic workflow automation tool integrating Canvas LMS API, OpenAI completions, and content extraction pipelines. The system implements asynchronous file downloading with proper session management, YouTube transcript extraction via youtube-transcript-api, and HTML content parsing with BeautifulSoup4. Features include intelligent text summarization to manage context windows, multi-format file processing (HTML, JSON, CSV, text), and a Streamlit-based GUI with real-time progress tracking. Architecture employs proper async/await patterns, thread-safe operation scheduling, and dataclass-based state management.
+        Academic research project for graduate coursework exploring automated assignment completion using AI to expose plagiarism vulnerabilities in educational systems. Integrates Canvas LMS and OpenAI APIs to automatically retrieve assignments, process multiple file formats (PDFs, HTML, documents), extract YouTube transcript data from embedded videos, and generate responses using GPT models. Implemented async/await patterns to handle large assignment batches without timeouts and built intelligent content summarization to manage context window constraints. Streamlit interface provides real-time progress tracking and submission previews. Demonstrates critical security gaps in current academic integrity systems and the need for improved plagiarism detection. Built as a proof-of-concept for educational research, not for actual use.
       </p>
       <div class="tags">
         <span class="tag">Python</span>
         <span class="tag">AsyncIO</span>
         <span class="tag">Canvas API</span>
         <span class="tag">OpenAI API</span>
-        <span class="tag">AIOHTTP</span>
+        <span class="tag">Streamlit</span>
       </div>
       <a href="https://github.com/jperrello/auto-student" target="_blank" class="arrow-link">View Project →</a>
     </article>
 
     <article class="highlighted-project">
-      <h2 class="project-title">JAKE - Academic Research Portal</h2>
+      <h2 class="project-title">Warrior Wordsmiths Media in Full Bloom Website</h2>
       <p class="project-desc">
-        Full-stack web application developed to modernize Stanislaus State's academic research discovery system. Implemented improved search algorithms to reduce irrelevant results, designed a user-friendly interface for research article tracking, and built backend systems for efficient metadata storage and retrieval. Project addressed real pain points in university research workflows through user research and iterative design. Gained experience in both frontend UI/UX design and backend API development.
+        Built a professional conference website for Stanislaus State's English Department to advertise their conference: Media in Full Bloom. Real-world client project that's actively used by the department to promote their event and manage attendee information. Designed a clean, accessible interface that works across devices, implemented responsive layouts, and ensured the site met academic presentation standards. Worked directly with department faculty to understand their requirements and delivered a production site that serves actual users.
       </p>
       <div class="tags">
-        <span class="tag">Full-stack</span>
-        <span class="tag">Search Optimization</span>
-        <span class="tag">REST API</span>
+        <span class="tag">HTML5</span>
+        <span class="tag">CSS</span>
+        <span class="tag">Responsive Design</span>
+        <span class="tag">Client Project</span>
       </div>
-      <a href="https://github.com/elliott2232/CS4800-JAKE" target="_blank" class="arrow-link">View Project →</a>
+      <a href="https://warrior-wordsmiths.github.io/conference/" target="_blank" class="arrow-link">View Project →</a>
     </article>
 
     <article class="highlighted-project">
       <h2 class="project-title">School Counselor Chatbot</h2>
       <p class="project-desc">
-        Two-day hackathon project (StanHack 2024) building an AI-powered academic advising chatbot. Integrated natural language processing for student queries about course selection, prerequisites, and degree requirements. Implemented 3D avatar modeling for enhanced user engagement and developed conversational AI flows to guide students through academic planning decisions. Project demonstrated rapid prototyping skills and creative application of AI technologies in educational contexts.
+        Hackathon project (StanHack 2024, 2 days) where we built an AI academic advisor chatbot. Students could ask about course selection, prerequisites, and degree requirements. I worked on the 3D art and UI design because I was learning Blender at the time. Good lesson in rapid prototyping under time pressure.
       </p>
       <div class="tags">
         <span class="tag">AI/NLP</span>
         <span class="tag">3D Modeling</span>
-        <span class="tag">Chatbot Development</span>
-        <span class="tag">Rapid Prototyping</span>
+        <span class="tag">Chatbot</span>
+        <span class="tag">Hackathon</span>
       </div>
       <a href="https://github.com/ChristianAlameda/HackStan" target="_blank" class="arrow-link">View Project →</a>
     </article>
@@ -311,11 +318,12 @@
     <article class="highlighted-project">
       <h2 class="project-title">Personal Website</h2>
       <p class="project-desc">
-        The source code for the website you are looking at now! Built with semantic HTML5, custom CSS including animations and responsive design, and vanilla JavaScript for interactive elements. Demonstrates clean code organization, accessibility considerations, and modern web design principles.
+        Simple web design. HTML5, custom CSS with animations, responsive layout, vanilla JavaScript for interactions. Wanted something that felt like work instead of another Bootstrap template. 
       </p>
       <div class="tags">
         <span class="tag">HTML5</span>
         <span class="tag">CSS</span>
+        <span class="tag">Responsive Design</span>
       </div>
       <a href="https://github.com/jperrello/Personal-Website" target="_blank" class="arrow-link">View Project →</a>
     </article>
@@ -323,7 +331,6 @@
 
   <!-- FOOTER -->
   <footer>
-    <p class="copyright">© 2025 Joey Perrello. All Rights Reserved.</p>
   </footer>
 
 </body>
