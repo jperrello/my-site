@@ -1,0 +1,190 @@
+[
+  {
+    "id": "saturn",
+    "type": "project",
+    "header": "Saturn — Zero-Configuration AI Service Discovery",
+    "dates": "Sep 2025 – Present",
+    "subtitle": "Master's Thesis Project — MS CS @ UCSC",
+    "bullets": [
+      {
+        "text": "Designed mDNS/DNS-SD protocol with TXT record metadata schema encoding model name, capabilities, context window, cost tier, and ephemeral auth tokens",
+        "ai_context": {
+          "situation": "AI services on local networks (university labs, home setups, small offices) required users to manually configure API endpoints and distribute keys to every application. Each app needed its own key, and adding a new model meant reconfiguring every client. The friction was high enough that most people just used cloud APIs even when local inference was available.",
+          "approach": "Applied the same zero-configuration pattern used by network printers (Bonjour/mDNS) to AI services. Designed a custom DNS-SD service type (_saturn._tcp.local.) with structured TXT records that encode everything a client needs — model name, capabilities, context window size, cost tier, and ephemeral auth tokens. This means services announce themselves on the network and clients discover them automatically, just like finding a printer.",
+          "result": "Any application on the network can discover available AI models without configuration. The protocol supports priority-based routing (lower number = higher priority), automatic failover when services go down, and ephemeral credential distribution so keys never need to be shared manually. Published as both a Python package (PyPI) and TypeScript SDK (npm)."
+        }
+      },
+      {
+        "text": "Published saturn-ai on PyPI and ai-sdk-provider-saturn on npm — installable in two commands across both ecosystems",
+        "ai_context": {
+          "situation": "Saturn needed to be usable by developers in both the Python and JavaScript/TypeScript ecosystems. Python dominates AI/ML tooling while TypeScript dominates web development and the Vercel AI SDK ecosystem. Shipping in only one language would cut out half the potential users.",
+          "approach": "Built and published two separate packages: saturn-ai on PyPI (Python 3.10+, built on FastAPI, Zeroconf, uvicorn, and pydantic) and ai-sdk-provider-saturn on npm (4 versions, implements Vercel AI SDK's LanguageModelV3 interface). Each package follows the conventions of its ecosystem — the Python package uses pip install, the npm package uses the Vercel AI SDK provider pattern.",
+          "result": "Developers can add Saturn discovery to their applications with `pip install saturn-ai` or `npm install ai-sdk-provider-saturn`. The npm package went through 4 published versions as the Vercel AI SDK interface evolved. Also submitted a PR to the Vercel AI SDK repo itself (21.7K stars) to add Saturn as an official community provider."
+        }
+      },
+      {
+        "text": "Built 3 proxy servers (OpenRouter, Ollama, DeepInfra) exposing OpenAI-compatible REST endpoints with SSE streaming",
+        "ai_context": {
+          "situation": "Different AI backends use different APIs and authentication schemes. OpenRouter aggregates 200+ cloud models, Ollama runs local inference with its own API format, and DeepInfra uses scoped JWT tokens. A client shouldn't need to know which backend it's talking to.",
+          "approach": "Built three proxy servers that translate each backend's native API into a unified OpenAI-compatible interface. All three expose the same /v1/chat/completions, /v1/models, and /v1/health endpoints. Streaming uses FastAPI's StreamingResponse with SSE (text/event-stream). The Ollama proxy handles format translation between Ollama's response structure and OpenAI's. The DeepInfra proxy manages scoped JWT authentication.",
+          "result": "Any OpenAI-compatible client works with any Saturn backend without modification. Users can mix cloud and local models on the same network and clients automatically discover and route to them. The unified interface means switching from cloud to local inference requires zero code changes."
+        }
+      },
+      {
+        "text": "Cross-compiled Go binary for MIPS routers with OpenWrt UCI configuration, LuCI web interface, and systemd integration",
+        "ai_context": {
+          "situation": "The ideal deployment for a network service discovery tool is on the router itself — it's always on, sees all network traffic, and is the natural place for infrastructure services. But consumer routers run on MIPS processors with minimal resources, not x86.",
+          "approach": "Cross-compiled a Go binary targeting MIPS architecture for GL.iNet routers running OpenWrt. Built a full integration layer: UCI configuration for OpenWrt's config system, a LuCI web interface so the service can be managed from the router's admin panel, and systemd service files for automatic startup and process management.",
+          "result": "Saturn can run as a network-level service on consumer hardware. A household or small office can install it on their router and every device on the network automatically discovers available AI services. Three GitHub releases include pre-built MIPS binaries so users don't need a cross-compilation toolchain."
+        }
+      },
+      {
+        "text": "Community posts on r/RASPBERRY_PI_PROJECTS and r/OpenWebUI reached 82K views and 70 upvotes",
+        "ai_context": {
+          "situation": "Saturn solves a real problem for the self-hosted AI community — people running local models on Raspberry Pis, home servers, and lab networks. Needed to validate that the problem resonated beyond just my own use case.",
+          "approach": "Posted demonstrations and explanations to relevant subreddits: r/RASPBERRY_PI_PROJECTS (hardware/self-hosting audience) and r/OpenWebUI (AI interface community). Focused on the practical use case rather than the technical implementation.",
+          "result": "The r/RASPBERRY_PI_PROJECTS post hit 56K views and 52 upvotes. The r/OpenWebUI post reached 26K views and 17 upvotes. Combined 82K views and 70 upvotes validated real community interest in zero-configuration AI service discovery."
+        }
+      }
+    ]
+  },
+  {
+    "id": "opencode-saturn",
+    "type": "project",
+    "header": "OpenCode-Saturn — Open Source Contribution",
+    "dates": "Jan 2026 – Feb 2026",
+    "subtitle": "Fork of anomalyco/opencode (103K stars)",
+    "bullets": [
+      {
+        "text": "Integrated zero-configuration AI service discovery into OpenCode (103K stars), enabling automatic mDNS-based model registration with dynamic provider management and failover",
+        "ai_context": {
+          "situation": "OpenCode is one of the most popular open-source AI coding agents (103K stars, 10K forks). Like all AI tools, it requires users to manually configure API keys and endpoints for each model provider. This is exactly the problem Saturn solves, and integrating into a widely-used tool would demonstrate Saturn's value in a real production codebase.",
+          "approach": "Forked OpenCode and modified its provider system to support dynamic registration. Added registerDynamic/unregisterDynamic methods for runtime provider management, built an mDNS discovery server (mdns.ts), bridged Saturn's event system with OpenCode's event bus, and implemented failover logic. Had to fix LanguageModelV3 compatibility issues and normalize Zod validation across the provider, session, and transport layers.",
+          "result": "OpenCode with Saturn integration automatically discovers AI models on the local network. No API keys, no endpoint configuration. Models appear and disappear dynamically as services come online or go offline. Added a test suite (saturn.test.ts, 134 lines) to verify the integration. The work touched provider system, event bus, session processor, and UI sync layer — demonstrating the ability to navigate and modify a large, unfamiliar codebase."
+        }
+      }
+    ]
+  },
+  {
+    "id": "auto-student",
+    "type": "project",
+    "header": "Auto-Student — Academic Assignment Automation",
+    "dates": "2025",
+    "subtitle": "Teaching with Generative AI course — UCSC",
+    "bullets": [
+      {
+        "text": "Built an async Python pipeline integrating Canvas LMS API and OpenAI API with two-stage LLM architecture for automated academic content processing",
+        "ai_context": {
+          "situation": "For Adam Smith's Teaching with Generative AI course, needed to build a system that demonstrates how LLMs interact with educational infrastructure. The research question: how effectively can current LLMs process and respond to real university assignments when given structured access to course materials?",
+          "approach": "Built an async Python pipeline that connects to Canvas LMS via its API, fetches assignments, extracts content from multiple formats (HTML pages, YouTube transcripts, document files) using BeautifulSoup4 and youtube-transcript-api, then processes everything through a two-stage LLM pipeline: Gemma 3 4B handles summarization, Gemma 3 27B handles generation. Used asyncio.gather for parallel content extraction and aiohttp for concurrent API calls.",
+          "result": "Working desktop application with CustomTkinter GUI that bridges synchronous UI events with concurrent async I/O. Includes built-in ethical safeguards (plagiarism warnings, academic integrity reminders). The project demonstrated how LLMs can interact with real educational systems and contributed to coursework research on the implications of generative AI in education."
+        }
+      }
+    ]
+  },
+  {
+    "id": "language-driven-play",
+    "type": "project",
+    "header": "Language Driven Play — LLM Game-Playing Agents",
+    "dates": "2025",
+    "subtitle": "Game AI course (CMPM 146/249a) — UCSC",
+    "bullets": [
+      {
+        "text": "Engineered LLM game-playing agents achieving 42% higher performance than Monte Carlo Tree Search across 5 evaluation scenarios",
+        "ai_context": {
+          "situation": "Traditional game AI relies on search algorithms like MCTS that need explicit game state evaluation functions. The research question (extending Bateni & Whitehead's FDG '24 paper): can LLMs with the right prompting strategy outperform search-based agents in games with complex, text-heavy card mechanics where semantic understanding matters?",
+          "approach": "Built and evaluated 6 agent architectures: Reverse Chain-of-Thought (RCoT), standard Chain-of-Thought (CoT), MCTS with UCT, Backtrack (depth-3 lookahead), Zero-shot, and Random. Tested across 5 game scenarios in MiniStS (headless Slay the Spire simulation) with multiple LLM providers (GPT-4.1, Claude Sonnet 4.5, Gemini 2.5). Used OpenAI's Responses API with structured outputs to ensure consistent agent decision formatting. Ran 125+ simulations total.",
+          "result": "RCoT agents scored 42% higher average HP than MCTS in the Tolerate scenario (50.6 vs 35.6) and won 4 of 5 test scenarios overall. The key finding: LLMs demonstrate superior semantic reasoning for interpreting novel card mechanics without retraining, while search-based agents struggle with cards they haven't seen in their evaluation function. This suggests LLM agents are better suited for games where understanding card text matters more than exhaustive state-space search."
+        }
+      }
+    ]
+  },
+  {
+    "id": "ta-ucsc",
+    "type": "work",
+    "header": "Teaching Assistant — Database Systems",
+    "dates": "Jan 2025 – Jan 2026",
+    "subtitle": "University of California, Santa Cruz",
+    "bullets": [
+      {
+        "text": "Taught SQL, PostgreSQL, and Docker lab environments to 161 students across 3 quarters; 87.5% rated assignment preparation help \"Very Frequently\"",
+        "ai_context": {
+          "situation": "CSE180/182 (Database Systems) at UCSC serves a large undergraduate population. Many students encounter SQL and database concepts for the first time. The course uses PostgreSQL with Docker containers, adding a layer of infrastructure complexity on top of the database concepts.",
+          "approach": "Ran weekly lab sections with live demos, whiteboard walkthroughs, and mock exams. Created structured Google Docs and interactive lab documents that students could reference independently. Focused on making the Docker + PostgreSQL setup invisible so students could focus on SQL concepts rather than fighting infrastructure. Held individual and group office hours throughout each quarter.",
+          "result": "Anonymous student evaluations (SETS data, Spring 2025, 161 students, 46 TA evaluations): 87.5% rated assignment preparation help as \"Very Frequently,\" 82.5% for concept explanation, 80.0% for structured sections with clear goals. Multiple students independently wrote that I was the best TA they'd ever had at UCSC. 60% of students attended 5+ lab sessions, well above typical optional section attendance."
+        }
+      },
+      {
+        "text": "Multiple students independently reported \"best TA I've ever had at UCSC\" in anonymous evaluations",
+        "ai_context": {
+          "situation": "Teaching effectiveness at scale is hard to measure. Student evaluations can be gamed by being easy rather than effective. Wanted to understand whether students were actually learning or just comfortable.",
+          "approach": "Focused on three things: being prepared (having examples ready before each section), being honest about what I didn't know (looking things up together when a question went beyond my prep), and making the material tangible (every concept tied to a query they could run). Didn't try to be entertaining — tried to be useful.",
+          "result": "Three independent student quotes from anonymous evaluations: \"This is by far the best TA I have had at UCSC. He is very engaged with students and willing to help no matter what stage of their understanding they are in. I bet he can teach this class on his own.\" / \"Joey is the most understanding, well-prepared, dedicated, and student-focused TA I have ever met.\" / \"I have never met a CS TA as helpful as he is.\" The fact that these came from anonymous evaluations — where students have no incentive to be kind — matters."
+        }
+      }
+    ]
+  },
+  {
+    "id": "idtech",
+    "type": "work",
+    "header": "In-Person Instructor — iD Tech Camps",
+    "dates": "Jun 2025 – Aug 2025",
+    "subtitle": "iD Tech Camps at Stanford University",
+    "bullets": [
+      {
+        "text": "Taught Python, Machine Learning, and Unity to students aged 10-16 in groups of ~8",
+        "ai_context": {
+          "situation": "iD Tech runs summer technology camps on university campuses. At Stanford, the student audience ranges from 10 to 16 years old with wildly different experience levels — some had never coded, others had been programming for years. Each session lasted one week, so there was no time for a slow ramp-up.",
+          "approach": "Designed curriculum that translated each concept into something students could build the same day. The challenge wasn't the technical content — it was reading each student's level in real time and adjusting mid-session. You have about 45 seconds before you lose a 12-year-old's attention, and you don't get a second session. Also responsible for the safety and wellbeing of minors on a university campus: completed background checks, CPR and First Aid certification, and American Camp Association training.",
+          "result": "Learned how to teach mixed-experience groups by shifting pedagogy mid-session. What worked for one student often didn't work for the next. The experience sharpened communication skills in ways that purely technical work doesn't — explaining machine learning to a 12-year-old on Stanford's campus forces a level of clarity that benefits all technical communication."
+        }
+      },
+      {
+        "text": "Fostered a fun, safe, and inclusive environment; completed background checks, CPR/First Aid certification, and American Camp Association training"
+      }
+    ]
+  },
+  {
+    "id": "cosmo",
+    "type": "work",
+    "header": "Software Engineer Intern — Cosmo by Filisia",
+    "dates": "Jul 2023 – Aug 2023",
+    "subtitle": "London Metropolitan University Accelerator",
+    "bullets": [
+      {
+        "text": "Developed data visualization and analytics tools for mobile app, enhancing educators' ability to track user progress",
+        "ai_context": {
+          "situation": "Cosmo is an education technology startup incubated at London Metropolitan University. Their mobile app is used by educators and therapists to track student progress, but the existing data visualization layer wasn't giving practitioners useful insights from the engagement data being collected.",
+          "approach": "Redesigned the data visualization and analytics layer in Python, focusing on modular code that could be maintained by a small team. Worked with an international engineering team based in London, using Agile methodologies with 2-week sprint cycles. This was a study-abroad internship — first experience working full-time on a dedicated engineering team.",
+          "result": "Delivered modular Python code that improved system performance. More importantly, learned how small teams move fast when everyone is aligned on what they're building. The experience taught how to deliver maintainable code under real deadlines and how to collaborate across time zones and cultural contexts."
+        }
+      },
+      {
+        "text": "Delivered modular, maintainable Python code that improved original system performance"
+      },
+      {
+        "text": "Collaborated with a diverse international engineering team using Agile methodologies with 2-week sprint cycles"
+      }
+    ]
+  },
+  {
+    "id": "peer-tutor",
+    "type": "work",
+    "header": "Peer Tutor — Learning Commons",
+    "dates": "Aug 2023 – May 2024",
+    "subtitle": "California State University, Stanislaus",
+    "bullets": [
+      {
+        "text": "Conducted one-on-one and group tutoring for CS and math courses; reviewed code for 20+ students",
+        "ai_context": {
+          "situation": "The Learning Commons at CSU Stanislaus provides peer tutoring for undergraduates. Computer science students often need help not just with concepts but with debugging — reading error messages, understanding stack traces, and developing systematic troubleshooting approaches.",
+          "approach": "Worked through problems one-on-one and in small groups. For code review, focused on giving structured feedback: what the code does, what it should do, and how to close the gap. Tried to teach debugging as a skill rather than just fixing each specific bug.",
+          "result": "Reviewed and debugged code for more than 20 students across CS and math courses. The experience built a foundation for later teaching roles — learning how to explain technical concepts at different levels of understanding, which became central to the TA position at UCSC."
+        }
+      },
+      {
+        "text": "Strengthened students' problem-solving skills by fostering effective debugging practices across coding assignments"
+      }
+    ]
+  }
+]

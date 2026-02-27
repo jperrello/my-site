@@ -1,0 +1,42 @@
+[
+  {
+    "text": "How does Saturn's service discovery work under the hood?",
+    "category": "technical",
+    "targets": ["saturn"]
+  },
+  {
+    "text": "What did they build for their master's thesis?",
+    "category": "overview",
+    "targets": ["saturn", "education"]
+  },
+  {
+    "text": "What do students say about their teaching?",
+    "category": "teaching",
+    "targets": ["ta-ucsc", "idtech"]
+  },
+  {
+    "text": "Would this person be a good fit for a backend infrastructure role?",
+    "category": "fit",
+    "targets": ["saturn", "skills"]
+  },
+  {
+    "text": "How did they contribute to a 103K-star open source project?",
+    "category": "open-source",
+    "targets": ["opencode-saturn"]
+  },
+  {
+    "text": "What are their honest skill gaps?",
+    "category": "gaps",
+    "targets": ["skills"]
+  },
+  {
+    "text": "What's the story behind the Vercel AI SDK PR?",
+    "category": "technical",
+    "targets": ["saturn"]
+  },
+  {
+    "text": "How did they deploy AI services on a MIPS router?",
+    "category": "technical",
+    "targets": ["saturn"]
+  }
+]
