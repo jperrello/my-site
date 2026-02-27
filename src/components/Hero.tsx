@@ -12,15 +12,15 @@ export default function Hero({ onChatOpen }: { onChatOpen: () => void }) {
         <h1>Hello, I&apos;m Joey Perrello.</h1>
         <p style={{ fontSize: "1.125rem", maxWidth: "65ch" }}>
           I graduated from{" "}
-          <a href="https://www.ucsc.edu/" target="_blank">UCSC</a> with an MSE
+          <a href="https://www.ucsc.edu/" target="_blank">UCSC</a> with a MSE
           in Computer Science and Engineering, with most of my research and
           course credit in Computational Media. I built{" "}
           <a href="https://github.com/jperrello/Saturn" target="_blank">Saturn</a>{" "}
           and was a teaching assistant for{" "}
           <a href="https://courses.engineering.ucsc.edu/courses/cse180" target="_blank">
-            Database Systems
+            Database Systems.
           </a>{" "}
-          through January 2026. I find large language models, and generative AI
+          I find large language models, and generative AI
           as a whole, to be incredibly interesting. It remains my primary area of
           focus and research, and I want to make education, creativity, and
           productivity stronger through the use of AI agents.
@@ -39,7 +39,7 @@ export default function Hero({ onChatOpen }: { onChatOpen: () => void }) {
           >
             donut render.
           </a>{" "}
-          I have done research in Infopolitics while taking Network Security, and
+          I have done research in infopolitics while taking Network Security, and
           might have predicted the 2024 election results a month before they{" "}
           <a
             href="https://drive.google.com/file/d/1mevR1MN72UcHVMBmSqdMGuTbEDixRjOo/view?usp=sharing"
@@ -59,8 +59,8 @@ export default function Hero({ onChatOpen }: { onChatOpen: () => void }) {
         </p>
         <p style={{ fontSize: "1.125rem", maxWidth: "65ch" }}>
           Feel free to look around this page at my projects and work experience.
-          Below are highlighted projects and my current position, reach out to me
-          if you&apos;d like to talk. I last updated this page in March 2026.
+          Below are highlighted projects and previous positions, reach out to me
+          if you&apos;d like to talk or chat with AI here. I last updated this page in March 2026.
         </p>
         <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
           <a href={`mailto:${bio.contact.email}`} className="nav-link">

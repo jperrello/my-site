@@ -67,7 +67,7 @@ export default function FitCheck() {
       <h2>Honest Fit Assessment</h2>
       <p style={{ color: "var(--color-muted)", fontSize: "0.875rem", marginBottom: "1rem" }}>
         Paste a job description. Get an honest assessment of whether I&apos;m the right
-        person &mdash; including when I&apos;m not.
+        person or if I&apos;m not.
       </p>
 
       <textarea
