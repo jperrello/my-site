@@ -1,6 +1,6 @@
 import profile from "@/data/profile.json"
 
-const RESUME_URL = "https://docs.google.com/document/d/1LFRu59g_5Sv_UZbjcVwY2nh2HB6MmaVK/edit?usp=sharing&ouid=108662796257647005613&rtpof=true&sd=true"
+const RESUME_URL = "/Joseph_Perrello_Resume.pdf"
 const REDDIT_URL = "https://www.reddit.com/user/NorthComplaint7631/"
 
 export default function Footer() {
