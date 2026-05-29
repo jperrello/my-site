@@ -1,6 +1,7 @@
 import profile from "@/data/profile.json"
 
 const RESUME_URL = "/Joseph_Perrello_Resume.pdf"
+const TRANSCRIPT_URL = "/Joseph_Perrello_Transcript.pdf"
 const REDDIT_URL = "https://www.reddit.com/user/NorthComplaint7631/"
 
 export default function Footer() {
@@ -32,6 +33,9 @@ export default function Footer() {
         </a>
         <a href={RESUME_URL} target="_blank" className="nav-link">
           Resume
+        </a>
+        <a href={TRANSCRIPT_URL} target="_blank" className="nav-link">
+          Transcript
         </a>
         <a href={REDDIT_URL} target="_blank" className="nav-link">
           Reddit
