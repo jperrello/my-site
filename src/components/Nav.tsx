@@ -31,6 +31,9 @@ export default function Nav({ onChatOpen }: { onChatOpen: () => void }) {
         <a href="#fit-check" className="nav-link">
           Fit Check
         </a>
+        <a href="/Joseph_Perrello_Resume.pdf" target="_blank" className="nav-link">
+          Resume
+        </a>
         <button className="cta" onClick={onChatOpen} style={{ marginTop: 0 }}>
           Ask AI
         </button>

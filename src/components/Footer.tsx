@@ -15,6 +15,9 @@ export default function Footer() {
       }}
     >
       <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+        <a href={RESUME_URL} target="_blank" className="nav-link">
+          Resume
+        </a>
         <a href={`mailto:${bio.contact.email}`} className="nav-link">
           Email
         </a>
@@ -30,9 +33,6 @@ export default function Footer() {
         </a>
         <a href={bio.contact.linkedin} target="_blank" className="nav-link">
           LinkedIn
-        </a>
-        <a href={RESUME_URL} target="_blank" className="nav-link">
-          Resume
         </a>
         <a href={TRANSCRIPT_URL} target="_blank" className="nav-link">
           Transcript
